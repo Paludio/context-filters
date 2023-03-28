@@ -34,12 +34,15 @@ cd context-filters
 ```
 
 ### 3 - Dentro da pasta do projeto, execute o comando abaixo para instalar as dependências do projeto:
+Obs.: o comando npm install é chamado automaticamente caso utilize o Docker.
+Se optar pelo docker não a necessidade de instalar as dependências.
 
 Caso queira utilizar o docker
 ```sh
 docker-compose up -d
 ```
 
+Se não utilizad o docker é necessário instalar as dependências
 npm install:
 ```sh
 npm install
@@ -63,10 +66,6 @@ Abrindo na porta padrão que o React usa: <http://localhost:3000/> em seu navega
 
 - React-icons
 - React-toastify
-## Aprendizados
-
-O que você aprendeu construindo esse projeto? Quais desafios você enfrentou e como você superou-os?
-
 
 ## Melhorias
 
