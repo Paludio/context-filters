@@ -1,3 +1,5 @@
+import users from '../data/users';
+
 const TIME_OUT = 2000;
 const SUCCESS_STATUS = 'OK';
 
@@ -7,10 +9,10 @@ const simulaRequest = (response) => (callback) => {
   }, TIME_OUT);
 };
 
-export const compareUser = (user) => new Promise((resolve) => {
-  // lógica para comparar usuário
-  console.log(user);
-  const findUser = 'alguma coisa';
+export const compareUser = (userState) => new Promise((resolve) => {
+  const find = users.find((user) => user.password === userState.password);
+  console.log(find);
+  const findUser = find || 'FAIL';
   simulaRequest(findUser)(resolve);
 });
 
