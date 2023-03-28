@@ -13,7 +13,7 @@ Se trata de uma aplicação criada para estudar context e aninhar filtros de bus
 
 ## Instalação
 
-Requisitos:
+Requisitos para subir a aplicação com Docker
  - Docker
  - Docker Compose 
 
@@ -35,8 +35,14 @@ cd context-filters
 
 ### 3 - Dentro da pasta do projeto, execute o comando abaixo para instalar as dependências do projeto:
 
+Caso queira utilizar o docker
 ```sh
 docker-compose up -d
+```
+
+npm install:
+```sh
+npm install
 ```
 
 ### 4 - Acesse a aplicação:
