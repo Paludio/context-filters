@@ -15,6 +15,8 @@ export default function Table() {
         .name.toLowerCase().includes(searchInput.toLowerCase());
     }
 
+    console.log(phone[selectInput]);
+
     return phone[selectInput].toLowerCase().includes(searchInput.toLowerCase());
   });
 
@@ -73,7 +75,7 @@ export default function Table() {
             <tr key={ phone.id }>
               <td>{phone.name}</td>
               <td>{phone.brand}</td>
-              <td>{`R$ ${phone.price.toFixed(2)}`}</td>
+              <td>{`R$ ${Number(phone.price).toFixed(2)}`}</td>
               <td>{phone.color}</td>
               <td>{phone.storage}</td>
               <td>{phone.camera}</td>

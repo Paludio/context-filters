@@ -55,7 +55,7 @@ export default function Filters() {
                   keys.map((key) => (
                     <Option
                       key={ key }
-                      value={ key }
+                      value={ key.toString() }
                       className="rounded-lg bg-white"
                     >
                       {key}
