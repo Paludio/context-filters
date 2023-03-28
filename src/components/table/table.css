@@ -10,6 +10,10 @@ td {
   text-align: center;
 }
 
+tr {
+  height: 4vh;
+}
+
 tr:hover {
   background-color: rgb(33,150,243);
 }
@@ -17,6 +21,7 @@ tr:hover {
 .table {
   margin: auto;
   margin-top: 80px;
-  height: 60vh;
+  max-height: 60vh;
+  overflow-y: scroll;
   width: 90vw;
 }

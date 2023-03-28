@@ -15,7 +15,7 @@ export default function Table() {
         .name.toLowerCase().includes(searchInput.toLowerCase());
     }
 
-    return phone[selectInput].includes(searchInput);
+    return phone[selectInput].toLowerCase().includes(searchInput.toLowerCase());
   });
 
   const verifyInput = (a, b) => (
@@ -32,6 +32,8 @@ export default function Table() {
         return a[selectInput].toLowerCase() < b[selectInput].toLowerCase() === true
           ? menosUm : 0;
       });
+
+      setPhones(newArray);
     }
 
     if (param === 'desc') {
@@ -41,13 +43,14 @@ export default function Table() {
         return a[selectInput].toLowerCase() > b[selectInput].toLowerCase() === true
           ? menosUm : 0;
       });
+
+      setPhones(newArray);
     }
-    return false;
-  });
+    return newArray;
+  }, [newArray, selectInput, setPhones]);
 
   useEffect(() => {
     sortArray(sortInput);
-    setPhones(newArray);
   }, [sortInput]);
 
   return (
