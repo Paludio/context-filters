@@ -1,0 +1,13 @@
+.logo {
+  align-items: center;
+  background-color: rgb(254,231,76);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  height: 20vh;
+  margin-top: 10%;
+  width: 14.7vw;
+  position: absolute;
+  top: 0;
+  left: 50;
+}

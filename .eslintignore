@@ -1,0 +1,5 @@
+cypress/*
+coverage/*
+src/tests/*
+cypress.config.js
+tailwind.config.cjs

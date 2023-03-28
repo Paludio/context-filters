@@ -1,0 +1,22 @@
+th {
+  border-bottom: 2px solid yellow;
+  border-right: 2px solid yellow;
+  padding: 5px 0;
+  text-align: center;
+}
+
+td {
+  border-bottom: 2px solid yellow;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: rgb(33,150,243);
+}
+
+.table {
+  margin: auto;
+  margin-top: 80px;
+  height: 60vh;
+  width: 90vw;
+}
