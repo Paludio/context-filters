@@ -9,7 +9,7 @@ import FilterContext from '../../context/FilterContext';
 import PhoneContext from '../../context/PhoneContext';
 
 export default function Filters() {
-  const { phones } = useContext(PhoneContext);
+  const { keys } = useContext(PhoneContext);
   const {
     searchInput,
     setSearchInput,
@@ -17,9 +17,6 @@ export default function Filters() {
     setSelectInput,
     setSortInput,
   } = useContext(FilterContext);
-
-  const keys = phones.length === 0 ? ''
-    : Object.keys(phones[0]).filter((key) => key !== 'id');
 
   return (
     <form className="flex items-center justify-around mt-20">
@@ -41,12 +38,12 @@ export default function Filters() {
           <Select
             name="selectInput"
             id="field-select"
-            label="Field"
+            label={ keys.length === 0 ? 'Carregando...' : 'Select a field' }
             value={ selectInput }
             onChange={ (e) => setSelectInput(e) }
           >
             {
-              keys === ''
+              keys.length === 0
                 ? (
                   <Option
                     className="rounded-lg bg-white"

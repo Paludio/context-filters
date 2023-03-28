@@ -14,6 +14,7 @@ export const compareUser = (userState) => new Promise((resolve) => {
   if (find) {
     const { password: _, ...data } = find;
     simulaRequest(data)(resolve);
+    localStorage.setItem('user', JSON.stringify(data));
   } else {
     simulaRequest('FAIL')(resolve);
   }

@@ -6,29 +6,43 @@ import Logo from '../../components/logo/Logo';
 import Loading from '../../components/loading/Loading';
 import { compareUser } from '../../services/api';
 import UserContext from '../../context/UserContext';
+import { notifyError, notifySuccess } from '../../utils/toastifyMessages';
 
 export default function Login() {
   const { setUser } = useContext(UserContext);
   const history = useHistory();
 
   const [visible, setVisible] = useState(false);
-  const [erro, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const onClick = async () => {
     setLoading(true);
-    const response = await compareUser({ email, password });
+    try {
+      const response = await compareUser({ email, password });
+      if (response === 'FAIL') {
+        setLoading(false);
+        throw new Error('Email ou senha incorretos');
+      }
 
-    if (response === 'FAIL') {
+      setUser(response);
       setLoading(false);
-      return setError(true);
+      notifySuccess('Login realizado com sucesso');
+      history.push('/analytics');
+    } catch (err) {
+      notifyError(err.message);
+      setLoading(false);
     }
+  };
 
-    setUser(response);
-    setLoading(false);
-    history.push('/analytics');
+  const activeButton = () => {
+    const regexEmail = /\S+@\S+\.\S+/i;
+    const MIN_LENGTH_PASSWORD = 6;
+
+    const test = regexEmail.test(email) && password.length >= MIN_LENGTH_PASSWORD;
+
+    return test;
   };
 
   return (
@@ -97,14 +111,12 @@ export default function Login() {
                   className="min-w-full text-lg py-3"
                   color="yellow"
                   type="button"
+                  disabled={ !activeButton() }
                   onClick={ () => onClick() }
                 >
                   Login
                 </Button>
               )
-          }
-          {
-            erro && <span>Deu ruim</span>
           }
         </div>
       </form>

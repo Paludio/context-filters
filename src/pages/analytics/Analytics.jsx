@@ -7,12 +7,14 @@ import Table from '../../components/table/Table';
 import PhoneContext from '../../context/PhoneContext';
 
 export default function Analytics() {
-  const { loading, setLoading, setPhones } = useContext(PhoneContext);
+  const { loading, setLoading, setPhones, setKeys } = useContext(PhoneContext);
 
   useEffect(() => {
     const requestAPI = async () => {
       const result = await getPhones();
+      const keys = Object.keys(result[0]).filter((key) => key !== 'id');
       setPhones(result);
+      setKeys(keys);
       setLoading(false);
     };
 

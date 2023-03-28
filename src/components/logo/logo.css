@@ -9,5 +9,6 @@
   width: 14.7vw;
   position: absolute;
   top: 0;
-  left: 50;
+  margin-left: 0.9%;
+  right: 50;
 }

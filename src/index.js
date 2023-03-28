@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import 'react-toastify/dist/ReactToastify.min.css';
 import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserProvider from './provider/UserProvider';
@@ -15,6 +17,7 @@ root.render(
       <FilterProvider>
         <PhoneProvider>
           <UserProvider>
+            <ToastContainer />
             <App />
           </UserProvider>
         </PhoneProvider>
