@@ -1,7 +1,7 @@
 import users from '../data/users';
+import phones from '../data/phones';
 
 const TIME_OUT = 2000;
-const SUCCESS_STATUS = 'OK';
 
 const simulaRequest = (response) => (callback) => {
   setTimeout(() => {
@@ -11,12 +11,14 @@ const simulaRequest = (response) => (callback) => {
 
 export const compareUser = (userState) => new Promise((resolve) => {
   const find = users.find((user) => user.password === userState.password);
-  console.log(find);
-  const findUser = find || 'FAIL';
-  simulaRequest(findUser)(resolve);
+  if (find) {
+    const { password: _, ...data } = find;
+    simulaRequest(data)(resolve);
+  } else {
+    simulaRequest('FAIL')(resolve);
+  }
 });
 
-export const createUser = (user) => new Promise((resolve) => {
-  console.log(user);
-  simulaRequest(SUCCESS_STATUS)(resolve);
+export const getPhones = () => new Promise((resolve) => {
+  simulaRequest(phones)(resolve);
 });

@@ -1,7 +1,55 @@
 import './table.css';
-import phones from '../../data/phones';
+import { useCallback, useContext, useEffect } from 'react';
+import PhoneContext from '../../context/PhoneContext';
+import FilterContext from '../../context/FilterContext';
+
+const menosUm = -1;
 
 export default function Table() {
+  const { phones, setPhones } = useContext(PhoneContext);
+  const { searchInput, selectInput, sortInput } = useContext(FilterContext);
+
+  const newArray = phones.filter((phone) => {
+    if (selectInput === '') {
+      return phone
+        .name.toLowerCase().includes(searchInput.toLowerCase());
+    }
+
+    return phone[selectInput].includes(searchInput);
+  });
+
+  const verifyInput = (a, b) => (
+    a.name.toLowerCase() < b.name.toLowerCase() === true ? menosUm : 0);
+
+  const verifyInputDesc = (a, b) => (
+    a.name.toLowerCase() > b.name.toLowerCase() === true ? menosUm : 0);
+
+  const sortArray = useCallback((param) => {
+    if (param === 'asc') {
+      newArray.sort((a, b) => {
+        if (selectInput === '') return verifyInput(a, b);
+
+        return a[selectInput].toLowerCase() < b[selectInput].toLowerCase() === true
+          ? menosUm : 0;
+      });
+    }
+
+    if (param === 'desc') {
+      newArray.sort((a, b) => {
+        if (selectInput === '') return verifyInputDesc(a, b);
+
+        return a[selectInput].toLowerCase() > b[selectInput].toLowerCase() === true
+          ? menosUm : 0;
+      });
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    sortArray(sortInput);
+    setPhones(newArray);
+  }, [sortInput]);
+
   return (
     <table className="table">
       <thead>
@@ -18,7 +66,7 @@ export default function Table() {
       </thead>
       <tbody>
         {
-          phones.map((phone) => (
+          newArray.map((phone) => (
             <tr key={ phone.id }>
               <td>{phone.name}</td>
               <td>{phone.brand}</td>

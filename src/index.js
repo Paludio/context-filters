@@ -5,14 +5,20 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserProvider from './provider/UserProvider';
+import PhoneProvider from './provider/PhoneProvider';
+import FilterProvider from './provider/FiltersProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
-      <UserProvider>
-        <App />
-      </UserProvider>
+      <FilterProvider>
+        <PhoneProvider>
+          <UserProvider>
+            <App />
+          </UserProvider>
+        </PhoneProvider>
+      </FilterProvider>
     </React.StrictMode>
   </BrowserRouter>,
 );
