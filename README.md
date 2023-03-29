@@ -55,6 +55,12 @@ Abrindo na porta padrão que o React usa: <http://localhost:3000/> em seu navega
 
   </details>
 <br />
+
+## Como usar
+
+- A aplicação está utilizando uma simulação de requisição a um banco de dados. Portanto, há uma validação de senha de acordo com um arquivo user.js.
+- Todas as senhas são 123456, então para logar é somente necessário utilizar essa senha
+- Caso queira testar o erro só é necessário errar a senha
     
 ## ⚙️ Tecnologias
 
