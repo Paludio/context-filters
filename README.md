@@ -34,19 +34,19 @@ cd context-filters
 ```
 
 ### 3 - Dentro da pasta do projeto, execute o comando abaixo para instalar as dependências do projeto:
-##Obs.: o comando npm install é chamado automaticamente caso utilize o Docker.
+## Obs.: o comando npm install é chamado automaticamente caso utilize o Docker.
 Se optar pelo docker não a necessidade de instalar as dependências.
 
-#Caso queira utilizar o docker
+# Caso queira utilizar o docker
 ```sh
 docker-compose up -d
 ```
 
-##Se não utilizar o docker é necessário instalar as dependências
+## Se não utilizar o docker é necessário instalar as dependências
 
-#npm install:
+# npm install:
 ```sh
-npm install
+npm install && npm start
 ```
 
 ### 4 - Acesse a aplicação:
