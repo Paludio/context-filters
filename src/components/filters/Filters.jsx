@@ -78,7 +78,7 @@ export default function Filters() {
           type="radio"
           name="sort"
           value="desc"
-          label="Descendente"
+          label="Decrescente"
           onClick={ (e) => setSortInput(e.target.value) }
         />
       </fieldset>
