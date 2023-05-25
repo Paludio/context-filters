@@ -1,8 +1,8 @@
 version: '3.9'
 services:
   frontend:
-    build: ./frontend
     container_name: frontend
+    build: ./frontend
     ports:
       - 3000:3000
     platform: linux/x86_64
@@ -18,8 +18,8 @@ services:
       backend:
         condition: service_healthy
   backend:
-    build: ./backend
     container_name: backend
+    build: ./backend
     ports:
       - 3001:3001
     platform: linux/x86_64
@@ -41,8 +41,8 @@ services:
       - ./backend/src:/backend/src
     restart: always
   db:
-    image: mysql:8.0.21
     container_name: db
+    image: mysql:8.0.21
     platform: linux/x86_64
     ports:
       - 3002:3306
