@@ -60,7 +60,7 @@ export default function Login() {
                 name="email"
                 value={ email }
                 onChange={ (e) => setEmail(e.target.value) }
-                label="Login"
+                label="Email"
                 size="lg"
               />
             </label>

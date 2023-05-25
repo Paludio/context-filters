@@ -5,8 +5,11 @@ services:
     ports:
       - 3000:3000
     platform: linux/x86_64
-    working_dir: /app-frontend
+    working_dir: /frontend
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3000"]
+      test: ["CMD", "lsof", "-t", "-i:7000"]
       timeout: 10s
       retries: 5
+    volumes:
+      - ./src:/frontend/src
+    restart: always
