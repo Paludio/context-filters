@@ -1,7 +1,7 @@
-const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 
 const newToken = () => {
-  return bcrypt.hashSync(8).substring();
+  return crypto.randomBytes(2).toString('hex');
 };
 
 module.exports = newToken;

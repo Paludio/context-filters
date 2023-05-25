@@ -1,3 +1,5 @@
+USE `context_filters`;
+
 INSERT INTO `phones` (name, brand, price, color, storage, camera, screen, operating_system)
 VALUES
   ('Samsung Galaxy S21', 'Samsung', '4000', 'Phantom Black', '256GB', '64MP', '6.2 inches', 'Android 11'),

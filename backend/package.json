@@ -18,8 +18,7 @@
     "mysql2": "2.3.0",
     "node-mysql": "^0.4.2",
     "shelljs": "0.8.5",
-    "snakeize": "^0.1.0",
-    "bcryptjs": "2.4.3"
+    "snakeize": "^0.1.0"
   },
   "devDependencies": {
     "chai": "4.3.4",
