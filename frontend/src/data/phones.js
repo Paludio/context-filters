@@ -1,3 +1,7 @@
+const IOS_14 = 'iOS 14';
+const MP = '64MP';
+const ANDROID_11 = 'Android 11';
+const ANDROID_10 = 'Android 10';
 
 const phones = [
   {
@@ -7,9 +11,9 @@ const phones = [
     price: '4000',
     color: 'Phantom Black',
     storage: '256GB',
-    camera: '64MP',
+    camera: MP,
     screen: '6.2 inches',
-    operatingSystem: 'Android 11',
+    operatingSystem: ANDROID_11,
   },
   {
     id: 2,
@@ -20,7 +24,7 @@ const phones = [
     storage: '128GB',
     camera: '12MP',
     screen: '6.1 inches',
-    operatingSystem: 'iOS 14',
+    operatingSystem: IOS_14,
   },
   {
     id: 3,
@@ -42,7 +46,7 @@ const phones = [
     storage: '128GB',
     camera: '108MP',
     screen: '6.67 inches',
-    operatingSystem: 'Android 11',
+    operatingSystem: ANDROID_11,
   },
   {
     id: 5,
@@ -53,7 +57,7 @@ const phones = [
     storage: '128GB',
     camera: '12.2MP',
     screen: '6 inches',
-    operatingSystem: 'Android 11',
+    operatingSystem: ANDROID_11,
   },
   {
     id: 6,
@@ -73,9 +77,9 @@ const phones = [
     price: '1800',
     color: 'Indigo Blue',
     storage: '128GB',
-    camera: '64MP',
+    camera: MP,
     screen: '6.81 inches',
-    operatingSystem: 'Android 10',
+    operatingSystem: ANDROID_10,
   },
   {
     id: 8,
@@ -86,7 +90,7 @@ const phones = [
     storage: '128GB',
     camera: '12MP',
     screen: '6.1 inches',
-    operatingSystem: 'Android 10',
+    operatingSystem: ANDROID_10,
   },
   {
     id: 9,
@@ -96,8 +100,11 @@ const phones = [
     color: 'Black',
     screen: '6.7 inches',
     storage: '128 GB',
-    camera: '64MP',
-    operatingSystem: 'Android 10',
+    ram: '6 GB',
+    camera: MP,
+    operatingSystem: ANDROID_10,
+    battery: '4500 mAh',
+    features: '4G LTE',
   },
   {
     id: 10,
@@ -107,8 +114,11 @@ const phones = [
     color: 'Graphite',
     screen: '6.7 inches',
     storage: '128 GB',
+    ram: '6 GB',
     camera: '12MP',
     operatingSystem: 'iOS 14.1',
+    battery: '3687 mAh',
+    features: '5G',
   },
   {
     id: 11,
@@ -118,8 +128,11 @@ const phones = [
     color: 'Phantom Black',
     screen: '6.67 inches',
     storage: '128 GB',
+    ram: '6 GB',
     camera: '48MP',
-    operatingSystem: 'Android 11',
+    operatingSystem: ANDROID_11,
+    battery: '5160 mAh',
+    features: '4G LTE',
   },
   {
     id: 12,
@@ -129,8 +142,11 @@ const phones = [
     color: 'Dynamic Gray',
     screen: '6.8 inches',
     storage: '128 GB',
+    ram: '6 GB',
     camera: '108MP',
-    operatingSystem: 'Android 11',
+    operatingSystem: ANDROID_11,
+    battery: '6000 mAh',
+    features: '4G LTE',
   },
   {
     id: 13,
@@ -140,8 +156,11 @@ const phones = [
     color: 'Gray Sierra',
     screen: '6.43 inches',
     storage: '128 GB',
+    ram: '8 GB',
     camera: '50MP',
-    operatingSystem: 'Android 11',
+    operatingSystem: ANDROID_11,
+    battery: '4500 mAh',
+    features: '5G',
   },
 ];
 

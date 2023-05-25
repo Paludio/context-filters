@@ -8,7 +8,7 @@ services:
     platform: linux/x86_64
     working_dir: /frontend
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:7000"]
+      test: ["CMD", "lsof", "-t", "-i:3000"]
       timeout: 10s
       retries: 5
     volumes:
@@ -56,6 +56,6 @@ services:
     cap_add:
       - SYS_NICE
     volumes:
-      - ./backend/db/migration.sql:docker-entrypoint-initdb.d/migration.sql
-      - ./backend/db/seeder.sql:docker-entrypoint-initdb.d/seeder.sql
+      - ./backend/db/migration.sql:/docker-entrypoint-initdb.d/migration.sql
+      - ./backend/db/seeder.sql:/docker-entrypoint-initdb.d/seeder.sql
 
