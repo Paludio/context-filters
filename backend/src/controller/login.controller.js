@@ -10,10 +10,6 @@ const login = async (req, res, next) => {
     return res.status(200).json({ token: message })
   }
   catch (error) {
-    if (error.message === errorType.ACCESS_DENIED) {
-      return res.status(errorMap(errorType.ACCESS_DENIED)).json({ message: 'Acesso negado' });
-    }
-    error.message = 'Erro interno';
     next(error);
   }
   

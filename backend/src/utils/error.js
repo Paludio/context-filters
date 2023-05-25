@@ -1,3 +1,7 @@
+errorMessage = {
+  ACCESS_DENIED: 'Acesso negado',
+}
+
 const errorType = {
   ACCESS_DENIED: 'ACCESS_DENIED',
 }
@@ -10,5 +14,6 @@ const errorMap = (typeError) => statusHTTP[typeError] || 500;
 
 module.exports = {
   errorType,
+  errorMessage,
   errorMap,
 };
