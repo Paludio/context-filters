@@ -28,13 +28,13 @@ services:
       db:
         condition: service_healthy
     environment:
-      - API_PORT="${API_PORT}"
-      - MYSQL_USER="${MYSQL_USER}"
-      - MYSQL_PASSWORD="${MYSQL_PASSWORD}"
-      - MYSQL_HOST="${MYSQL_HOST}"
-      - MYSQL_PORT="${MYSQL_PORT}"
+      - API_PORT=${API_PORT}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_PORT=${MYSQL_PORT}
     healthcheck:
-      test: ["cmd", "lsof", "-t", "-i:3001"]
+      test: ["CMD", "lsof", "-t", "-i:3001"]
       timeout: 10s
       retries: 5
     volumes:
@@ -47,15 +47,15 @@ services:
     ports:
       - 3002:3306
     environment:
-    - MYSQL_ROOT_PASSWORD="${MYSQL_PASSWORD}"
+    - MYSQL_ROOT_PASSWORD=password
     restart: always
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
       timeout: 10s
       retries: 5
+    volumes:
+      - ./backend/src/db/migration.sql:/docker-entrypoint-initdb.d/migration.sql
+      - ./backend/src/db/seeder.sql:/docker-entrypoint-initdb.d/seeder.sql
     cap_add:
       - SYS_NICE
-    volumes:
-      - ./backend/db/migration.sql:/docker-entrypoint-initdb.d/migration.sql
-      - ./backend/db/seeder.sql:/docker-entrypoint-initdb.d/seeder.sql
 
