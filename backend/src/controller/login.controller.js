@@ -1,5 +1,4 @@
 const { loginService } = require("../service");
-const { errorMap, errorType } = require('../utils/error');
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;
