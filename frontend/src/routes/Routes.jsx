@@ -7,7 +7,6 @@ export default function Routes() {
     <Switch>
       <Route exact path="/" component={ Login } />
       <Route path="/analytics" component={ Analytics } />
-      <Route path="/register" component={ Register } />
     </Switch>
   );
 }
