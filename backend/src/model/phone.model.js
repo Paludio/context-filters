@@ -33,9 +33,19 @@ const editPhone = async (phone, id) => {
   return affectedRows;
 };
 
+const deletePhone = async (id) => {
+  const [{ affectedRows }] = await connection.execute(
+    'DELETE FROM phones WHERE id = ?',
+    [id],
+  );
+
+  return affectedRows;
+};
+
 
 module.exports = {
   getAllPhones,
   getPhoneById,
   editPhone,
+  deletePhone,
 };

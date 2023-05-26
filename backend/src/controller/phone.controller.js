@@ -37,8 +37,21 @@ const updatePhone = async (req, res, next) => {
   }
 };
 
+const deletePhone = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    await phoneService.deletePhone(Number(id));
+
+    return res.status(202).json({ message: 'Phone deleted successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getPhones,
   getPhoneById,
   updatePhone,
+  deletePhone
 };

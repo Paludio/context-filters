@@ -36,8 +36,21 @@ const updatePhone = async (phone, id) => {
   }
 };
 
+const deletePhone = async (id) => {
+  try {
+    await getPhoneById(id);
+
+    const result = await phoneModel.deletePhone(id);
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   getPhones,
   getPhoneById,
   updatePhone,
+  deletePhone,
 };
