@@ -4,4 +4,4 @@ const phoneController = require('./phone.controller');
 module.exports = {
   loginController,
   phoneController
-};
+}

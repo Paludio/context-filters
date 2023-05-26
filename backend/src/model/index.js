@@ -3,5 +3,5 @@ const phoneModel = require('./phone.model');
 
 module.exports = {
   userModel,
-  phoneModel,
+  phoneModel
 };

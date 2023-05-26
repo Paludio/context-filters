@@ -1,6 +1,6 @@
 const loginSchema = require("./schemas/login.schema");
 
-const loginMiddleware = (req, res, next) => {
+const verifyLogin = (req, res, next) => {
   const { error } = loginSchema.validate(req.body);
 
   if (error) {
@@ -10,4 +10,4 @@ const loginMiddleware = (req, res, next) => {
   next();
 };
 
-module.exports = loginMiddleware;
+module.exports = verifyLogin;

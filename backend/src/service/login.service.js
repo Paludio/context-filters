@@ -1,5 +1,6 @@
 const { userModel } = require('../model');
-const { errorType } = require('../utils/error');
+
+const { errorType } = require('../utils/errors');
 const newToken = require('../utils/token');
 
 const login = async ({email, password}) => {
@@ -19,5 +20,5 @@ const login = async ({email, password}) => {
 };
 
 module.exports = {
-  login,
+  login
 };
