@@ -6,7 +6,7 @@ const verifyToken = (req, res, next) => {
   const { error } = tokenSchema.validate(authorization);
 
   if (error) {
-    return res.status(400).json({ message: error.details[0].message });
+    return res.status(400).json({ message: 'Token id required' });
   }
 
   next();

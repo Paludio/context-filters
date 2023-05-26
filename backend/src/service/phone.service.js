@@ -24,7 +24,20 @@ const getPhoneById = async (id) => {
   }
 };
 
+const updatePhone = async (phone, id) => {
+  try {
+    await getPhoneById(id);
+
+    const result = await phoneModel.editPhone(phone, id);
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   getPhones,
-  getPhoneById
+  getPhoneById,
+  updatePhone,
 };

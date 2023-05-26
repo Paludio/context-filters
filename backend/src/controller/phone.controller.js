@@ -24,7 +24,21 @@ const getPhoneById = async (req, res, next) => {
   }
 };
 
+const updatePhone = async (req, res, next) => {
+  const { id } = req.params;
+  
+  try {
+    await phoneService.updatePhone(req.body, Number(id));
+
+    return res.status(201).json({ phone: { id, ...req.body } });
+   
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getPhones,
   getPhoneById,
+  updatePhone,
 };
