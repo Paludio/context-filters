@@ -4,7 +4,7 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { useHistory } from 'react-router-dom';
 import Logo from '../../components/logo/Logo';
 import Loading from '../../components/loading/Loading';
-import { compareUser } from '../../services/api';
+import { postAPI } from '../../services/api';
 import UserContext from '../../context/UserContext';
 import { notifyError, notifySuccess } from '../../utils/toastifyMessages';
 
@@ -20,11 +20,9 @@ export default function Login() {
   const onClick = async () => {
     setLoading(true);
     try {
-      const response = await compareUser({ email, password });
-      if (response === 'FAIL') {
-        setLoading(false);
-        throw new Error('Email ou senha incorretos');
-      }
+      const response = await postAPI('/login', { email, password });
+      
+      console.log(response);
 
       setUser(response);
       setLoading(false);

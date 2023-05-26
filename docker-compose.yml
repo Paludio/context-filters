@@ -11,6 +11,8 @@ services:
       test: ["CMD", "lsof", "-t", "-i:3000"]
       timeout: 10s
       retries: 5
+    environment:
+      - API_PORT=${API_PORT}
     volumes:
       - ./frontend/src:/frontend/src
     restart: always
