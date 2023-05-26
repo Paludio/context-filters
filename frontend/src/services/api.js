@@ -1,25 +1,10 @@
-import users from '../data/users';
-import phones from '../data/phones';
+import axios from 'axios';
 
-const TIME_OUT = 2000;
+const api = axios.create({
+  baseURL: `http://localhost:${process.env.API_PORT || 3001}`,
+});
 
-const simulaRequest = (response) => (callback) => {
-  setTimeout(() => {
-    callback(response);
-  }, TIME_OUT);
+export const postAPI = async (url, data) => {
+  const response = await api.post(url, data);
+  return response;
 };
-
-export const compareUser = (userState) => new Promise((resolve) => {
-  const find = users.find((user) => user.password === userState.password);
-  if (find) {
-    const { password: _, ...data } = find;
-    simulaRequest(data)(resolve);
-    localStorage.setItem('user', JSON.stringify(data));
-  } else {
-    simulaRequest('FAIL')(resolve);
-  }
-});
-
-export const getPhones = () => new Promise((resolve) => {
-  simulaRequest(phones)(resolve);
-});
