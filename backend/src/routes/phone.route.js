@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const { phoneController } = require('../controller');
-const { validateId } = require('../middleware/phone.middleware');
+const { verifyId } = require('../middleware/phone.middleware');
+const { verifyToken } = require('../middleware/token.middleware');
 
-router.get('/', phoneController.getPhones);
-router.get('/:id', validateId, phoneController.getPhoneById);
+router.get('/', verifyToken, phoneController.getPhones);
+router.get('/:id', verifyToken, verifyId, phoneController.getPhoneById);
 
 module.exports = router;

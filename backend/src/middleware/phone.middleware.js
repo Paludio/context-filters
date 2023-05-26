@@ -1,6 +1,6 @@
 const { phoneIdSchema } = require("./schemas/phone.schema");
 
-const validateId = (req, res, next) => {
+const verifyId = (req, res, next) => {
   const { id } = req.params;
   const { error } = phoneIdSchema.validate(Number(id));
 
@@ -12,5 +12,5 @@ const validateId = (req, res, next) => {
 };
 
 module.exports = {
-  validateId,
+  verifyId,
 };
