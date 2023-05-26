@@ -8,7 +8,17 @@ const getAllPhones = async () => {
   return result;
 };
 
+const getPhoneById = async (id) => {
+  const [[result]] = await connection.execute(
+    'SELECT * FROM phones WHERE id = ?',
+    [id],
+  );
+
+  return result;
+};
+
 
 module.exports = {
   getAllPhones,
+  getPhoneById,
 };

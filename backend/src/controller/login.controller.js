@@ -4,9 +4,9 @@ const login = async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
-    const { message } = await loginService.login({ email, password });
+    const token = await loginService.login({ email, password });
 
-    return res.status(200).json({ token: message })
+    return res.status(200).json({ token })
   }
   catch (error) {
     next(error);

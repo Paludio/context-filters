@@ -12,7 +12,7 @@ const login = async ({email, password}) => {
 
     const token = newToken();
 
-    return { message: token };
+    return token;
   } catch (error) {
     throw error;
   }
