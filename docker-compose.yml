@@ -1,15 +1,61 @@
 version: '3.9'
 services:
   frontend:
-    build: ./
+    build: ./frontend
+    container_name: frontend
     ports:
       - 3000:3000
     platform: linux/x86_64
     working_dir: /frontend
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:7000"]
+      test: ["CMD", "lsof", "-t", "-i:3000"]
       timeout: 10s
       retries: 5
     volumes:
-      - ./src:/frontend/src
+      - ./frontend/src:/frontend/src
     restart: always
+    depends_on:
+      backend:
+        condition: service_healthy
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - 3001:3001
+    platform: linux/x86_64
+    working_dir: /backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - API_PORT=${API_PORT}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_PORT=${MYSQL_PORT}
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3001"]
+      timeout: 10s
+      retries: 5
+    volumes:
+      - ./backend/src:/backend/src
+    restart: always
+  db:
+    image: mysql:8.0.21
+    container_name: db
+    platform: linux/x86_64
+    ports:
+      - 3002:3306
+    environment:
+    - MYSQL_ROOT_PASSWORD=password
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
+      timeout: 10s
+      retries: 5
+    volumes:
+      - ./backend/src/db/migration.sql:/docker-entrypoint-initdb.d/migration.sql
+      - ./backend/src/db/seeder.sql:/docker-entrypoint-initdb.d/seeder.sql
+    cap_add:
+      - SYS_NICE
+
